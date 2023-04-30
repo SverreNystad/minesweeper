@@ -9,6 +9,11 @@ public class World {
 
     private List<ArrayList<Cell>> grid;
 
+
+    public World(int width, int height, int start_mines, int start_x, int start_y) {
+        this(width, height, start_mines);
+    }
+
     /**
      * Creates a new world with the given width and height and the given number of mines
      * It will validate the given parameters and throw an IllegalArgumentException if they are invalid
@@ -26,42 +31,9 @@ public class World {
         // Initialize the grid
         this.grid = makeGrid(width, height);
 
-        // Add mines to the grid
         addMinesToGrid(this.grid, start_mines);
 
-        // Add Neighbours
-        for (int y = 0; y < height; y++) {
-            for (int x = 0; x < width; x ++) {
-                
-                List<Cell> neighbours = new ArrayList<Cell>();
-                // Neighbors are the 8 cells around the current cell
-                if (x > 0) {
-                    neighbours.add(this.grid.get(y).get(x-1));
-                }
-                if (x < width - 1) {
-                    neighbours.add(this.grid.get(y).get(x+1));
-                }
-                if (y > 0) {
-                    neighbours.add(this.grid.get(y-1).get(x));
-                }
-                if (y < height - 1) {
-                    neighbours.add(this.grid.get(y+1).get(x));
-                }
-                if (x > 0 && y > 0) {
-                    neighbours.add(this.grid.get(y-1).get(x-1));
-                }
-                if (x < width - 1 && y > 0) {
-                    neighbours.add(this.grid.get(y-1).get(x+1));
-                }
-                if (x > 0 && y < height - 1) {
-                    neighbours.add(this.grid.get(y+1).get(x-1));
-                }
-                if (x < width - 1 && y < height - 1) {
-                    neighbours.add(this.grid.get(y+1).get(x+1));
-                }
-                this.grid.get(y).get(x).setNeighbours(neighbours);
-            }
-        }
+        addNeibours(width, height, this.grid);
 
     }
 
@@ -118,10 +90,41 @@ public class World {
         return grid;
     }
 
-    public World(int width, int height, int start_mines, int start_x, int start_y) {
-        
-        this(width, height, start_mines);
+    private static void addNeibours(int width, int height, List<ArrayList<Cell>> grid) {
+        for (int y = 0; y < height; y++) {
+            for (int x = 0; x < width; x ++) {
+                
+                List<Cell> neighbours = new ArrayList<Cell>();
+                // Neighbors are the 8 cells around the current cell
+                if (x > 0) {
+                    neighbours.add(grid.get(y).get(x-1));
+                }
+                if (x < width - 1) {
+                    neighbours.add(grid.get(y).get(x+1));
+                }
+                if (y > 0) {
+                    neighbours.add(grid.get(y-1).get(x));
+                }
+                if (y < height - 1) {
+                    neighbours.add(grid.get(y+1).get(x));
+                }
+                if (x > 0 && y > 0) {
+                    neighbours.add(grid.get(y-1).get(x-1));
+                }
+                if (x < width - 1 && y > 0) {
+                    neighbours.add(grid.get(y-1).get(x+1));
+                }
+                if (x > 0 && y < height - 1) {
+                    neighbours.add(grid.get(y+1).get(x-1));
+                }
+                if (x < width - 1 && y < height - 1) {
+                    neighbours.add(grid.get(y+1).get(x+1));
+                }
+                grid.get(y).get(x).setNeighbours(neighbours);
+            }
+        }
     }
+    
     public Cell getCell(int x,int y) throws IndexOutOfBoundsException {
         return this.grid.get(y).get(x);
     }
