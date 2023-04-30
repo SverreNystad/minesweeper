@@ -13,15 +13,15 @@ public class WorldTest {
     @Test
     void testGetCellNeighbours() {
         World world = new World(10, 10, 10);
-        assert world.getCell(0, 0).getNeighbourMineCount() == 3;
-        assert world.getCell(1, 1).getNeighbourMineCount() == 8;
+        assert world.getCell(0, 0).getNeighbours().size() == 3;
+        assert world.getCell(1, 1).getNeighbours().size() == 8;
     }
 
     @Test
     void testGetCellNeighboursEdge() {
         World world = new World(10, 10, 10);
-        assert world.getCell(0, 1).getNeighbourMineCount() == 5;
-        assert world.getCell(9, 9).getNeighbourMineCount() == 3;
+        assert world.getCell(0, 1).getNeighbours().size() == 5;
+        assert world.getCell(9, 9).getNeighbours().size() == 3;
     }
 
     @Test
