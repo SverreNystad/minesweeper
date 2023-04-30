@@ -24,17 +24,9 @@ public class World {
         validateWorld(width, height, start_mines);
 
         // Initialize the grid
-        for (int y = 0; y < height; y++) {
-            this.grid.add(new ArrayList<Cell>());
-        }
-        // Add cells
-        for (int y = 0; y < height; y++) {
-            for (int x = 0; x < width; x ++) {
-                this.grid.get(y).add(new Cell(x,y));
-            }
-        }
+        this.grid = makeGrid(width, height);
 
-        // Add mines
+        // Add mines to the grid
         addMinesToGrid(this.grid, start_mines);
 
         // Add Neighbours
