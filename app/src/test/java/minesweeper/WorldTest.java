@@ -115,4 +115,13 @@ public class WorldTest {
         });
     }
 
+    @Test
+    void testWorldNotPlaceBombsOnFirstClick() {
+        for (int i = 0; i < 100; i++) {
+            World world = new World(2, 2, 3, 0, 0);
+            world.revealCell(0, 0);
+            assert world.getCell(0, 0).getType() != TileType.MINE;
+        }
+    }
+
 }
