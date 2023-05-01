@@ -21,7 +21,7 @@ $ cd minesweeper
 3. Compile and run the project using Gradle:
 
 ```
-$ gradle run
+$ gradlew run
 ```
 
 ## Gameplay
@@ -40,5 +40,5 @@ $ gradle test
 
 - Implement a user-friendly graphical interface
 - Add the ability to save and load games
-- Add the ability to customize the game difficulty level
-- Add the ability to play against other players or the computer.
+- Add countdown.
+- Add score board
