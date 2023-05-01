@@ -33,7 +33,7 @@ The game begins by prompting the player to enter the dimensions of the game boar
 The project includes test suites for much of the functionality. To run the tests, use the following command:
 
 ```
-$ gradle test
+$ gradlew test
 ```
 
 ## Future Improvements
@@ -41,4 +41,16 @@ $ gradle test
 - Implement a user-friendly graphical interface
 - Add the ability to save and load games
 - Add countdown.
-- Add score board
+- Add score board.
+
+## Notes
+The project was a challenge for myself to implement the game in under 2 hours. The next face is to refactor the application.
+
+### Learning point
+* Try to design top down not bottom up
+  * I Saw that i created things i did not need. In the End every models only purpose was to serve the top classes so if i had started with them I could have created a simpler design and spared time.
+* TDD works pretty good and ensures test suit.
+  * I made some large changes in the last hour because i realised after play testing that the grid with mines should not place mines before the first player move. This made me refactor some parts to make it easier to make the change and keep a version without the change as both are valid.
+  * Tests made changes much easier later on as when refactoring i could check if it did as expected.
+  * Remember to keep test suit updated when purpose of methods change. (lost 10 min to mental model being outdated XD)
+  * I switched to TDD mid project and development vent much smoother. Need to test this approach more.
