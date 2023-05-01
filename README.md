@@ -28,6 +28,9 @@ $ gradlew run
 
 The game begins by prompting the player to enter the dimensions of the game board (width and height) and the number of mines to be placed on the board. The player then clicks on cells to reveal what is hidden underneath. If the player reveals a mine, the game ends. If the player reveals all cells that are not mines, the player wins the game. The player can also flag cells as mines to keep track of which cells they think contain mines.
 
+![minesweeper](https://user-images.githubusercontent.com/89105607/235387721-b2c5e994-21ec-438c-94c2-2cf3d3d0982f.PNG)
+
+
 ## Testing
 
 The project includes test suites for much of the functionality. To run the tests, use the following command:
