@@ -31,10 +31,12 @@ public class GameLogic {
     
         if (world.getCell(x, y).getType() == TileType.MINE) {
             gameOver = true;
+            world.revealAllMines();
         }
     
         if (world.isGameWon()) {
             gameOver = true;
+            world.revealAllMines();
         }
     
         if (world.getCell(x, y).getNeighbourMineCount() == 0) {
@@ -54,6 +56,24 @@ public class GameLogic {
         world.renderInTerminal();
     }
 
+    /**
+     * Gets user input from the terminal
+     * @return
+     */
+    public static int[] getUserInput() {
+        int x, y;
+        int[] coordinates = new int[2];
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter x coordinate: ");
+        x = scanner.nextInt();
+        System.out.println("Enter y coordinate: ");
+        y = scanner.nextInt();
+        coordinates[0] = x;
+        coordinates[1] = y;
+
+        return coordinates;
+    }
+
     public static void main(String[] args) {
         GameLogic game = new GameLogic();
         game.startGame(5, 5, 1);
@@ -66,23 +86,5 @@ public class GameLogic {
         }
         System.out.println("Game Over");
         game.renderWorld();
-    }
-
-    /**
-     * Gets user input from the terminal
-     * @return
-     */
-    private static int[] getUserInput() {
-        int x, y;
-        int[] coordinates = new int[2];
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter x coordinate: ");
-        x = scanner.nextInt();
-        System.out.println("Enter y coordinate: ");
-        y = scanner.nextInt();
-        coordinates[0] = x;
-        coordinates[1] = y;
-
-        return coordinates;
     }
 }
